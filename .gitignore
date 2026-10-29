@@ -1,0 +1,34 @@
+# --- IDEs y Editores de Texto ---
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*~
+
+# --- Historiales y Notas Personales ---
+*.log
+.history/
+todo.md
+notas_locales.md
+
+# --- Sistema Operativo ---
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Herramientas de IA / Entornos Locales ---
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
