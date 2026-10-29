@@ -32,7 +32,7 @@ Use the configured project tooling when it exists rather than manually imposing 
 
 ## State management and controllers
 
-Use the state-management library already adopted by the application unless a change is explicitly requested or a migration is justified.
+Remain agnostic to state-management libraries. Use the library already adopted by the application, whether it is BLoC/Cubit, Riverpod, GetX, Zenify, or another suitable option, unless a change is explicitly requested or a migration is justified.
 
 For controller-based architectures, keep controllers focused on state, state transitions, and orchestration. Keep widget rendering, layout decisions, and large widget trees in the presentation layer.
 

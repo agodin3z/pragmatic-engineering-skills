@@ -28,7 +28,9 @@ Before changing shared or widely consumed components, identify:
 
 Use available repository navigation, symbol search, dependency graphs, or code intelligence tools to do this efficiently. Inspect source files directly when tooling does not provide enough context.
 
-## Choose validation proportionally
+## Recommend validation proportionally
+
+Recommend validation based on the change's risk, scope, and available project tooling. Do not impose one universal mandatory test/build policy on every task. Explain when a check is important, and distinguish recommended checks from checks actually executed.
 
 Start with the smallest meaningful check:
 

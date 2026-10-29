@@ -64,9 +64,29 @@ Before applying detailed conventions, inspect the target repository.
 
 For architecture trade-offs and abstraction decisions, read [references/architecture-decisions.md](references/architecture-decisions.md).
 
+For a new project without established conventions, read [references/minimal-adaptable-architecture.md](references/minimal-adaptable-architecture.md) for an MVVM-oriented, feature-based starting point that can evolve with complexity.
+
 For Dart, Flutter, state, data, and error-handling practices, read [references/flutter-dart-practices.md](references/flutter-dart-practices.md).
 
 For investigation, impact analysis, testing, and validation, read [references/debugging-and-validation.md](references/debugging-and-validation.md).
+
+## Working with Other Skills
+
+- Complement, do not replace, official Dart and Flutter skills.
+- Defer to reliable, current technical documentation and
+  specialized skills for language semantics, framework APIs,
+  and framework-specific implementation details.
+- Follow the target project's explicit instructions and
+  established conventions unless they conflict with correctness
+  or security.
+- Use this skill to guide engineering judgment, architectural
+  trade-offs, scope control, and complexity management.
+- Do not interpret pragmatic simplification as permission to
+  ignore required tests, security requirements, or project rules.
+- When recommendations materially conflict, prioritize correctness
+  and security, explicit user requirements, project instructions,
+  and relevant technical guidance. Explain unresolved trade-offs
+  rather than silently mixing incompatible approaches.
 
 ## Implementation rules
 
@@ -96,7 +116,7 @@ For investigation, impact analysis, testing, and validation, read [references/de
 ### Keep UI and state responsibilities clear
 
 - Keep rendering and layout decisions in widgets, not in state controllers or application services.
-- Use the project's existing state-management approach.
+- Remain agnostic to state-management libraries and use the project's established approach, such as BLoC/Cubit, Riverpod, GetX, Zenify, or another suitable option.
 - Make reactive boundaries as small as practical so unrelated UI does not rebuild unnecessarily.
 - Use local widget state when state is truly local and does not need to participate in application-level behavior.
 - Do not create a controller, provider, or other state abstraction merely because every screen supposedly needs one.
@@ -129,8 +149,8 @@ Before declaring the task complete, verify that:
 - The implementation addresses the stated requirement.
 - The change is consistent with the target repository's conventions, or any necessary deviation is explained.
 - No unrelated changes or speculative abstractions were introduced.
-- Relevant analyzer checks, tests, or builds were run when available and appropriate.
-- Validation claims accurately reflect commands actually executed and their results.
+- Relevant analyzer checks, tests, or builds were considered and recommended or run when available and appropriate.
+- Validation claims accurately reflect commands actually executed and their results; recommend checks proportionate to risk without imposing a universal mandatory test/build policy.
 - Remaining risks, assumptions, and unvalidated behavior are stated plainly.
 
 ## Communication
