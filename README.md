@@ -1,16 +1,28 @@
 # Pragmatic Engineering Skills
 
-A collection of opinionated Agent Skills for building software
-with pragmatic architecture.
+A collection of opinionated Agent Skills built around pragmatic software engineering judgment.
 
 ## Philosophy
 
-Software architecture should reduce the cost of change,
-not maximize the number of abstractions.
+> Optimize for correctness, changeability, and the total cost of maintaining software, not architectural elegance in isolation.
+
+The goal is to solve the actual problem with the simplest reliable approach, respect the context of each project, and introduce complexity only when its benefits justify the cost.
 
 ## Skills
 
-### pragmatic-flutter
+### `pragmatic-engineering`
+
+A language- and framework-agnostic skill for architectural decisions, implementation planning, refactoring, debugging, and risk-aware validation.
+
+Install:
+
+```bash
+npx skills add agodin3z/pragmatic-engineering-skills --skill pragmatic-engineering
+```
+
+This skill is intentionally independent of any programming language, framework, cloud provider, or architectural style.
+
+### `pragmatic-flutter`
 
 This skill defines the identity of a senior, pragmatic Flutter engineer focused on the development, debugging, and refactoring of real-world applications. Its core philosophy is to prioritize simplicity and tangible benefits over speculative abstractions or unnecessary code rewrites.
 
@@ -26,6 +38,6 @@ When the AI ​​processes tasks using this skill, it is guided by the followin
 
 Install:
 
-```sh
+```bash
 npx skills add agodin3z/pragmatic-engineering-skills --skill pragmatic-flutter
 ```
