@@ -1,3 +1,6 @@
+![GitHub License](https://img.shields.io/github/license/agodin3z/pragmatic-engineering-skills) [![skills.sh](https://skills.sh/b/agodin3z/pragmatic-engineering-skills)](https://skills.sh/agodin3z/pragmatic-engineering-skills)
+
+
 # Pragmatic Engineering Skills
 
 A collection of opinionated Agent Skills built around pragmatic software engineering judgment.
