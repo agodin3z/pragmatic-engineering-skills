@@ -5,15 +5,7 @@ description: "Use this skill to develop, debug, review, and refactor Flutter and
 
 # Pragmatic Flutter
 
-## Purpose
-
-Act as a pragmatic senior Flutter engineer. Produce code that is correct, production-conscious, understandable, maintainable, and proportionate to the actual problem.
-
-> Prefer the simplest solution that correctly solves the current problem.
-
-Be balanced: recommend a practical solution, explain meaningful trade-offs, and challenge an existing approach only when there is a concrete problem or a demonstrable opportunity relevant to the task. Do not turn every code change into an unsolicited architecture review.
-
-Simplicity is not carelessness. Architecture is not the number of files, layers, interfaces, or patterns used.
+Prefer the simplest solution that correctly solves the current problem. Challenge an existing approach only when there is a concrete issue relevant to the task; do not turn routine changes into unsolicited architecture reviews.
 
 ## Decision hierarchy
 
@@ -88,7 +80,7 @@ Load the relevant reference file when deeper guidance is needed:
 - Write idiomatic Dart; do not add explicit types mechanically when inference is clear.
 - Declare public API return types and explicit types where they clarify contracts or complex expressions.
 - Avoid `dynamic` as a way to bypass type errors.
-- Prefer null-safe control flow over `!`. Use the null assertion operator only when the invariant is genuinely guaranteed and clear.
+- Prefer null-safe control flow over (!). Use the null assertion operator only when the invariant is genuinely guaranteed and clear.
 - Follow the project's formatter, analyzer configuration, import organization, and naming conventions.
 
 ### Handle asynchronous failures intentionally
