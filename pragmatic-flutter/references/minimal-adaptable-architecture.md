@@ -10,14 +10,9 @@ MVVM is a responsibility model, not a mandate to create a large number of files 
 
 Reference: [Flutter app architecture recommendations](https://docs.flutter.dev/app-architecture/recommendations).
 
-## Start with the existing repository
+## Before applying this structure
 
-Before proposing a structure:
-
-1. Inspect the current folders, dependencies, routing, state-management approach, tests, and conventions.
-2. Identify whether the project already has useful boundaries and whether it follows a different, intentional architecture.
-3. Extend the existing approach when it is sound; do not migrate an established project to MVVM merely to match this reference.
-4. Avoid reorganizing unrelated code just to match the example below.
+Inspect the target repository first. If the project already has a coherent architecture, extend it rather than migrating it to MVVM (see [Adapting Existing Projects](#adapting-existing-projects)).
 
 ## Recommended default structure
 
@@ -39,7 +34,7 @@ project/
 │   ├── data/
 │   │   ├── repositories/
 │   │   ├── services/
-│   │   └── model/
+│   │   └── models/
 │   ├── config/
 │   ├── utils/
 │   ├── routing/

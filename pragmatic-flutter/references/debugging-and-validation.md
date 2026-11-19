@@ -34,13 +34,13 @@ Recommend validation based on the change's risk, scope, and available project to
 
 Start with the smallest meaningful check:
 
-- Type or compile issue: analyzer or compiler diagnostics.
-- Isolated behavior: targeted unit test.
-- Widget behavior: relevant Flutter widget tests.
+- Type, lint, or compile issue: analyzer or compiler diagnostics (e.g., `dart analyze`).
+- Isolated logic: targeted unit test (e.g., `flutter test test/path/to/unit_test.dart`).
+- Widget behavior: relevant Flutter widget tests (e.g., `flutter test test/path/to/widget_test.dart`).
 - Cross-module change: relevant integration tests and broader checks.
-- Release-sensitive change: applicable build or CI validation.
+- Release-sensitive change: applicable build or CI validation (e.g., `flutter build`).
 
-Prefer project scripts when they exist. Do not invent script names; inspect `pubspec.yaml`, `package.json`, project documentation, and CI configuration first.
+Prefer project scripts when they exist. Do not invent script names; inspect `pubspec.yaml`, `Makefile`, `melos.yaml`, project documentation, and CI configuration first.
 
 Do not run expensive or destructive commands without understanding their effects. Do not claim tests, analyzers, or builds passed unless they were actually run and their results support that claim.
 

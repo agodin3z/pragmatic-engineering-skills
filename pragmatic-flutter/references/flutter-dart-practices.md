@@ -21,25 +21,6 @@ A common import grouping is:
 
 Use the configured project tooling when it exists rather than manually imposing a different style.
 
-## Types and null safety
-
-- Let inference work when the type is obvious.
-- Declare public return types and explicit types when they clarify an API contract or complex expression.
-- Avoid `dynamic` to bypass analyzer errors.
-- Prefer normal null checks and flow analysis over `!`.
-- Use `!` only when a real invariant guarantees non-nullness.
-- Do not add null checks solely to silence the analyzer without understanding the source of nullability.
-
-## State management and controllers
-
-Remain agnostic to state-management libraries. Use the library already adopted by the application, whether it is BLoC/Cubit, Riverpod, GetX, Zenify, or another suitable option, unless a change is explicitly requested or a migration is justified.
-
-For controller-based architectures, keep controllers focused on state, state transitions, and orchestration. Keep widget rendering, layout decisions, and large widget trees in the presentation layer.
-
-Keep reactive rebuild scopes as small as practical. Prefer local widget state for state that belongs exclusively to a widget and does not need application-level coordination.
-
-Do not introduce a controller/provider solely to satisfy a blanket rule that every screen must have one.
-
 ## Models and code generation
 
 Follow the repository's existing model, serialization, immutability, and code-generation conventions.
@@ -57,26 +38,16 @@ Keep presentation code independent from transport DTOs when a meaningful domain 
 
 Do not create a mapper or domain model automatically for every type. Decide based on whether it protects a real boundary, represents distinct concepts, or reduces coupling.
 
-## Asynchronous work and errors
-
-Handle failures at the layer that can make a meaningful decision about them.
-
-- Report unexpected failures through the project's established logging or crash-reporting mechanism.
-- Preserve stack traces when the project's error-reporting API supports them.
-- Do not silently swallow exceptions.
-- Do not catch every exception just to return a success-shaped result.
-- Handle known harmless failures only when ignoring them is intentional, safe, and documented where needed.
-- Avoid error handling that masks programming defects.
-
-## Environment and secrets
-
-Use the repository's established environment/configuration mechanism. Never hardcode or commit credentials, API keys, tokens, passwords, or local secret values.
-
-Do not assume a particular environment library. Inspect how the project generates, loads, and validates configuration.
-
 ## Images and uploads
 
 When the application requires local image compression, follow the existing upload flow and established compression library. Prefer processing close to the upload boundary rather than spreading image manipulation across widgets and unrelated layers. Avoid compressing the same image repeatedly without a demonstrated need.
+
+## Widget lifecycle and BuildContext safety
+
+- **Dispose resources:** Always dispose `TextEditingController`, `ScrollController`, `AnimationController`, `FocusNode`, and active `StreamSubscription` instances in `dispose()` (or through the project's established lifecycle hooks).
+- **Async gaps and `BuildContext`:** Never use `BuildContext` across an `await` boundary without checking `context.mounted` (or `mounted` inside a `State` class) first.
+- **Avoid side effects in `build`:** Never trigger network calls, navigation, dialogs, or state mutations directly inside a `build()` method.
+- **Keys and lists:** Provide meaningful keys (`ValueKey`, `ObjectKey`) when list items are reordered, inserted, removed, or hold stateful widgets.
 
 ## Performance
 

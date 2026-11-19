@@ -73,7 +73,12 @@ If yes, reconsider the boundary.
 
 Keep small, screen-specific widgets near their use when locality improves understanding.
 
-Extract a widget when it is reused, has a clear independent responsibility, materially simplifies the parent widget, owns meaningful state, benefits from independent testing, or has become difficult to navigate.
+Extract a widget when it:
+- Is reused across screens or features.
+- Has a clear, independent responsibility.
+- Materially simplifies a complex parent widget.
+- Owns meaningful local state.
+- Benefits from independent testing.
 
 Prefer standard Flutter widgets before inventing custom abstractions. Do not use arbitrary line-count thresholds as the sole extraction criterion.
 
