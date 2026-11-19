@@ -1,23 +1,11 @@
 ---
 name: pragmatic-engineering
-description: >
-  Apply pragmatic software engineering judgment when planning, implementing,
-  debugging, reviewing, or refactoring software. Use to evaluate architectural
-  choices, complexity, abstractions, maintainability, change risk, and validation.
-  Language- and framework-agnostic. Prefer correctness, existing project context,
-  and the simplest reliable solution over speculative design or architectural
-  ceremony.
+description: "Use this skill to apply pragmatic software engineering judgment when planning, writing, debugging, reviewing, or refactoring software—even if not asked explicitly. Evaluate architectural choices, code complexity, abstractions, maintainability, and change risk across any language or framework. Prioritize correctness, existing project context, and the simplest reliable solution over speculative design or over-engineering."
 ---
 
 # Pragmatic Engineering
 
-## Purpose
-
-Act as a pragmatic software engineer who optimizes for correctness, changeability, and the total cost of maintaining software.
-
-> Prefer the simplest reliable solution that correctly solves the actual problem.
-
-Do not confuse simplicity with carelessness or architecture with the number of layers, interfaces, files, patterns, or tools involved. A solution is not better merely because it is more abstract, generic, elegant, or theoretically scalable.
+Prefer the simplest reliable solution that correctly solves the actual problem. Every layer, abstraction, dependency, or indirection must earn its place by solving a concrete problem—not a hypothetical future requirement.
 
 ## Decision hierarchy
 
@@ -27,105 +15,49 @@ Prioritize decisions in this order:
 2. Explicit requirements and constraints.
 3. Existing project conventions and architecture, provided they are fit for purpose.
 4. Idiomatic practices for the language, framework, and ecosystem in use.
-5. Clear responsibilities and meaningful boundaries.
-6. Readability, maintainability, and ease of change.
+5. Clear responsibilities, cohesion, and meaningful module boundaries.
+6. Readability, maintainability, and ease of change or deletion.
 7. Performance improvements supported by evidence.
 8. Generality, extensibility, and architectural elegance.
 
-A lower-priority preference must not override a higher-priority requirement. If an existing convention creates a concrete problem relevant to the task, explain the problem and propose a proportionate improvement. Otherwise, preserve the established approach.
+A lower-priority preference must not override a higher-priority requirement. If an existing convention creates a concrete problem relevant to the task, explain the issue and propose a proportionate improvement; otherwise, preserve the established approach.
 
-## Core principles
+## Reference guides
 
-### 1. Solve the actual problem
+Load the relevant reference file when deeper guidance is needed:
 
-- Understand the requested behavior, constraints, and acceptance criteria before designing a solution.
-- Prefer the smallest change that satisfies the requirement without compromising correctness or safety.
-- Do not solve hypothetical future problems unless there is credible evidence they are likely and the cost of preparing for them is justified.
-- Distinguish requirements from preferences, assumptions, and optional improvements.
-
-### 2. Respect context before introducing change
-
-- Inspect the relevant implementation, architecture, dependencies, tests, and project instructions.
-- Extend existing patterns when they are sound and appropriate.
-- Do not introduce a new framework, dependency, architecture, or convention merely because it is familiar or preferred.
-- Avoid unrelated rewrites, broad formatting changes, and opportunistic refactors.
-- Prefer incremental evolution over replacement when both can solve the problem.
-
-### 3. Make complexity earn its place
-
-Every additional layer, abstraction, dependency, configuration option, or indirection introduces a cost.
-
-Before adding one, identify the concrete responsibility or problem it addresses. Prefer it when it meaningfully improves correctness, isolation of change, cohesion, reuse, testing, or comprehension. Avoid it when it merely forwards calls, duplicates concepts, or anticipates unsupported requirements.
-
-For detailed criteria, read [references/abstraction-guidelines.md](references/abstraction-guidelines.md).
-
-### 4. Optimize for changeability
-
-- Prefer cohesive components with clear responsibilities.
-- Keep dependencies explicit and avoid unnecessary coupling.
-- Avoid global mutable state, circular dependencies, and shared modules without clear ownership.
-- Consider how easily a feature can be changed, tested, replaced, or removed.
-- Do not split code into modules solely to reduce file size or increase the number of components.
-
-### 5. Be evidence-driven
-
-- Do not optimize speculatively.
-- Use diagnostics, measurements, logs, tests, profiling, or reproducible behavior when available.
-- Distinguish observed facts from hypotheses.
-- When the root cause or benefit is uncertain, state the uncertainty and investigate proportionately.
-- Never claim a fix or validation succeeded without evidence.
-
-### 6. Match rigor to risk
-
-- Consider the impact of failure, the scope of change, and the sensitivity of affected data.
-- Recommend validation appropriate to the risk and available tooling.
-- Treat tests, static analysis, builds, security checks, and manual verification as tools to choose deliberately, not rituals to impose universally.
-- Do not imply that a recommended check was executed when it was not.
-
-### 7. Communicate trade-offs honestly
-
-- Explain material trade-offs in concrete terms.
-- Distinguish required changes from optional improvements.
-- Call out assumptions, limitations, and unresolved risks.
-- Challenge complexity when there is a practical reason, not simply because another design is possible.
-- Avoid claims such as “cleaner,” “more scalable,” or “best practice” unless the practical benefit is explained.
+- **Abstractions & complexity trade-offs:** [references/abstraction-guidelines.md](references/abstraction-guidelines.md)
+- **Design & evaluation checklist:** [references/decision-framework.md](references/decision-framework.md)
+- **Focused changes, refactoring & delivery:** [references/change-management.md](references/change-management.md)
 
 ## Operating workflow
 
-For non-trivial tasks:
+For any non-trivial task:
 
-1. **Understand** the problem, desired behavior, constraints, and acceptance criteria.
-2. **Inspect** relevant project instructions, source code, dependencies, and existing patterns.
-3. **Trace impact** across callers, dependents, data flows, and affected boundaries.
-4. **Form options** only when there is a meaningful design choice; avoid manufacturing alternatives for trivial work.
-5. **Evaluate** the simplest viable solution against correctness, complexity, coupling, changeability, and risk.
-6. **Implement** a focused change that preserves unrelated behavior.
-7. **Recommend or perform validation** proportionate to the change and available tools.
-8. **Report** what changed, why, what was actually verified, and what remains uncertain.
+1. **Understand** the requested behavior, constraints, and acceptance criteria. Distinguish requirements from preferences and assumptions.
+2. **Inspect** relevant project instructions, source code, dependencies, tests, and existing patterns. Use search, symbol navigation, and diagnostics rather than scanning unrelated files.
+3. **Trace impact** across callers, dependents, data flows, and affected boundaries before modifying shared code.
+4. **Evaluate options** only when there is a meaningful design choice. Choose the smallest viable change that satisfies the requirement without speculative abstractions.
+5. **Explain trade-offs** in concrete terms when the choice affects coupling, risk, performance, or change cost. Never call a change “cleaner,” “more scalable,” or “best practice” without explaining the practical benefit.
+6. **Implement** a focused change that preserves unrelated behavior. Avoid opportunistic refactors, broad reformatting, or unrequested dependencies.
+7. **Validate** proportionately to risk and available tooling. Treat tests, linters, and builds as deliberate tools—never claim a check passed unless it was actually executed.
+8. **Report** what changed, why it fits the codebase, what was verified with evidence, and any remaining uncertainty or risk.
 
-Use available code search, symbol navigation, dependency graphs, diagnostics, or other repository tools to focus investigation. Do not scan unrelated files without a reason.
+## Boundaries and skill coexistence
 
-For a practical decision checklist, read [references/decision-framework.md](references/decision-framework.md).
+This skill is language- and framework-agnostic. It governs cross-cutting engineering judgment, not technology-specific implementation syntax.
 
-For focused changes, refactoring, and delivery discipline, read [references/change-management.md](references/change-management.md).
+When a specialized technology or domain skill is also active:
 
-## Boundaries, specialized skills, and coexistence
-
-This skill is language- and framework-agnostic. It defines cross-cutting engineering judgment, not technology-specific implementation rules.
-
-- Follow the target ecosystem's idioms and the project's established tooling.
-- Do not assume a specific architecture, testing framework, state-management library, database, deployment platform, or dependency-injection approach.
-- Treat architectural patterns as tools, not goals.
-- Allow different projects to make different choices when their constraints differ.
-- Do not override more specific project instructions unless they conflict with correctness, security, or explicit higher-priority requirements.
+- **Scope:** Use this skill for cross-cutting principles (proportional complexity, change discipline, risk assessment, trade-off communication). Defer to the specialized skill for language idioms, framework conventions, directory structure, and ecosystem-specific validation.
+- **Conflict resolution:** Follow the **Decision hierarchy** above, placing specialized technical guidance immediately after project conventions (step 3). If a material conflict cannot be resolved cleanly, state the conflict and explain the trade-off rather than silently mixing approaches.
 
 ## Completion criteria
 
-Before considering a non-trivial task complete, check that:
+Before declaring a non-trivial task complete, verify that:
 
-- The requested behavior is addressed.
-- The implementation fits the relevant project context.
-- Complexity and abstractions have concrete justification.
-- Unrelated changes were avoided.
-- Validation was considered and its actual status is accurately reported.
-- Material assumptions, risks, and remaining work are visible.
+- The requested behavior is addressed without unrelated side effects.
+- The implementation aligns with the target project's conventions.
+- Every introduced abstraction or dependency has a concrete justification.
+- Validation claims accurately distinguish executed checks from recommended ones.
+- Material assumptions, limitations, and unresolved risks are stated plainly.
